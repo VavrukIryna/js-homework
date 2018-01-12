@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Table</title>
+</head>
+
+<body>
+	<header>   <h1>Application Form</h1></header>
+	
+	<form target="_blank">
+		<label for="name">Name:</label>
+		<input id="name" type="text" name="name" required>
+
+		<p> <label for="surname">Surname:</label>
+			<input id="surname" type="text" name="surname"></p>
+			<p><label for="email">E-mail:</label>
+				<input id="email" type="email" name="email" required></p>
+				<label for="Telephone">Phone number:</label>
+				<input id="Telephone" type="tel" required>
+				<p><label for="date">Birthday:</label>
+					<input id="date" type="date"></p>
+
+					<p> <label>City:</label>
+						<select>
+							<option value="Lviv">Lviv</option>
+							<option value="Kyiv">Kyiv</option>
+							<option value="Cherson">Cherson</option>
+							<option value="Odessa">Odessa</option>
+							<option value="Charkiv">Charkiv</option>
+						</select>
+						<fieldset>
+							<legend>English level:</legend>
+							<input type="radio" id="radio1"> <label for="radio1">Begginer</label><br>
+							<input type="radio" id="radio2"> <label for="radio2">Elementary</label><br>
+							<input type="radio" id="radio3"> <label for="radio3">Lower Intermediate</label><br>
+							<input type="radio" id="radio4" checked> <label for="radio4">Intermediate</label><br>
+							<input type="radio" id="radio5"> <label for="radio5">Upper Intermediate</label><br>
+							<input type="radio" id="radio6"> <label for="radio6">Advanced</label><br>
+							<input type="radio" id="radio7"> <label for="radio7">Proficiency</label><br>
+						</fieldset>
+						<fieldset>
+							<legend>Programming languages:</legend>
+							<input type="checkbox" checked><label>Java</label><br>
+							<input type="checkbox" ><label>C#</label><br>
+							<input type="checkbox" ><label>C++</label><br>
+							<input type="checkbox" checked><label>JavaScript</label><br>
+
+						</fieldset>
+						<label>Enter your comment:</label>
+						<p><textarea rows="10" cols="45" name="text" placeholder="your comment here"></textarea></p>
+						<label for="file">Choose file</label>
+						<input type="file" id="file" name="file">
+						<br>
+						<input type="submit" value="Submit" formaction="success.html">
+						<br>
+						<input type="reset" value="Reset the form">
+					</form>
+
+				</body>
+				</html>
