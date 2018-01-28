@@ -1,0 +1,43 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+
+<body>
+    <ul>
+        <li>Some text
+            <button>Remove this line</button>
+        </li>
+        <li>Some text
+            <button>Remove this line</button>
+        </li>
+        <li>Some text
+            <button>Remove this line</button>
+        </li>
+    </ul>
+    <script>
+        //1.При кліку на кнопку - видаляти рядок.
+        /*
+             document.getElementsByTagName("button")[0].onclick=function(e){
+                 document.body.children[0].children[0].style.display= "none";}
+             
+             document.getElementsByTagName("button")[1].onclick=function(e){
+                 document.body.children[0].children[1].style.display= "none";}
+             
+             document.getElementsByTagName("button")[2].onclick=function(e){
+                 document.body.children[0].children[2].style.display= "none";}
+          */
+
+        //2.Зробити універсальний споcіб, який не залежить від кількості рядків
+
+        for (var i = 0; i < document.body.children[0].childNodes.length; i++) {
+            var elem = document.body.children[0].children[i].children[0];
+            elem.addEventListener("click", function () { this.parentElement.style.display = "none" });
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS Homework 2: querySelector, date, timeout</title>
+</head>
+
+<body>
+    <!-- Task 2  -->
+    <h1>World time</h1>
+    <ul>
+        <li data-location="london">London -
+            <span class="time">null</span>
+        </li>
+        <li data-location="kiev">Kiev -
+            <span class="time">null</span>
+        </li>
+        <li data-location="warshawa">Warshawa -
+            <span class="time">null</span>
+        </li>
+        <li data-location="los angeles">Los Angeles -
+            <span class="time">null</span>
+        </li>
+        <li data-location="new york">New York -
+            <span class="time">null</span>
+        </li>
+    </ul>
+
+    <script>
+        // вивести для кожного міста час і дату
+        // формат 24.09.2017 - 15:40
+        function addZero(date) {
+            if (date < 10) {
+                date += "";
+                date = "0" + date;
+            }
+            else {
+                date += "";
+            }
+            return date;
+        }
+
+        function convertData(d, t) {
+            date = d.getDate();
+            month = d.getMonth() + 1;
+            year = d.getFullYear();
+
+            hour = d.getHours() - t;
+            minutes = d.getMinutes();
+
+            if (hour < 0) {
+
+                hour = hour + 24;
+                date = (date - 1);
+                if ((date == 0)) {
+                    if ((month == 5) || (month == 7) || (month == 8) || (month == 10) || (month == 12)) {
+                        date = 30;
+                    }
+                    if (month == 3) {
+                        if (year % 4 == 0) {
+                            date = 29;
+                        }
+                        else {
+                            date = 28;
+                        }
+                    }
+                    else {
+                        date = 31;
+                    }
+                    month = month - 1;
+                    if (month == 0) {
+                        year = year - 1;
+                        month = 12;
+                    }
+
+                }
+            }
+
+
+
+            date = addZero(date);
+            month = addZero(month);
+
+            hour = addZero(hour);
+            minutes = addZero(minutes);
+
+
+            var result = date + "." + month + "." + year + " - " + hour + ":" + minutes;
+            return result;
+
+        }
+        var d = new Date();
+
+        var elem = document.querySelector("li[data-location='london'] span[class='time']");
+        elem.innerHTML = convertData(d, 2);
+        var elem = document.querySelector("li[data-location='kiev'] span[class='time']");
+        elem.innerHTML = convertData(d, 0);
+        var elem = document.querySelector("li[data-location='warshawa'] span[class='time']");
+        elem.innerHTML = convertData(d, 1);
+        var elem = document.querySelector("li[data-location='los angeles'] span[class='time']");
+        elem.innerHTML = convertData(d, 10);
+        var elem = document.querySelector("li[data-location='new york'] span[class='time']");
+        elem.innerHTML = convertData(d, 7);
+
+
+    </script>
+</body>
+
+</html>

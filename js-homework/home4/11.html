@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hide element</title>
+</head>
+
+<body>
+    <p id="text">Kiev is the capital of Ukraine</p>
+    <button id="button">Hide text</button>
+    <button id="button1">Hide Show text</button>
+    <button id="button2">Hide button</button>
+    <script>
+        var count = 0;
+        // 1. При кліку на кнопку - сховати текст.
+        function hideText() {
+            document.getElementById('text').style.display = 'none';
+
+        }
+        document.getElementById('button').onclick = hideText;
+
+
+        // 2. При кліку на кнопку ховати/показувати текст.
+        function hideShowText() {
+            count++;
+            console.log(count);
+            if (count % 2) {
+                document.getElementById('text').style.display = 'none';
+            }
+            else
+                document.getElementById('text').style.display = 'block';
+        }
+
+        document.getElementById('button1').onclick = hideShowText;
+
+        // 3.Створити кнопку, яка сама себе ховає при кліку.
+        function hideButton(event) {
+            var target = event.target;
+            target.style.display = "none";
+        }
+        document.getElementById('button2').onclick = hideButton;
+    </script>
+</body>
+
+</html>
