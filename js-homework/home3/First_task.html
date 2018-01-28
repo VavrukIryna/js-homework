@@ -1,117 +1,127 @@
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Capitalize</title>
 </head>
-<body>
-<script>
-  // 1. Написати функцію, скорочує строку і додає три крапки 
-  function truncate(str, maxlength) {
-  return  newstr = str.substr(0,maxlength)+"..."; 
-  }
-  // truncate("рудщ ві віав",3) = "руд..."
-  // 2. Знайти кількість букв "а" в речені "Назва Львів дана місту на честь князя Лева Даниловича, сина засновника Львова Данила Галицького." використовуючи indexOf
-      
-      function findA(str) {
-      var count=0, pos=0, newPos=0;
-     while(true){
-          newPos=str.indexOf("а",pos);
-        
-      if (newPos!=-1){
-          count++;
-          pos=newPos+1;
-        
-      }
-         else {
-           
-             break;
-         }
-     }
-  return count;
 
-  }
-      // 3. Написати функцію, яка буде фільтрувати рядок і видаляти слова "xxxx" i "polityka"
- 
-      
-       function stringFilter(str,firstWord,secondWord) {
-      var pos = 0, beginPos=0,endPos=0;
-           var clearString="";
-           
-while (true) {
-var foundFirstPos = (str.indexOf(firstWord, beginPos));
-    
-var foundSecondPos =(str.indexOf(secondWord,beginPos));
-    
-    
-            if((foundFirstPos==-1)&&(foundSecondPos==-1)){
-                if (beginPos!=str.length){
-                    clearString=clearString+ str.substring(beginPos);
+<body>
+    <h1>Please Open Developer Tools Console for output (Ctrl + Shift + I)</h1>
+    <script>
+        // 1. Написати функцію, скорочує строку і додає три крапки 
+        function truncate(str, maxlength) {
+            return newstr = str.substr(0, maxlength) + "...";
+        }
+        // truncate("рудщ ві віав",3) = "руд..."
+        // 2. Знайти кількість букв "а" в речені "Назва Львів дана місту на честь князя Лева Даниловича, сина засновника Львова Данила Галицького." використовуючи indexOf
+
+        function findA(str) {
+            var count = 0, pos = 0, newPos = 0;
+            while (true) {
+                newPos = str.indexOf("а", pos);
+
+                if (newPos != -1) {
+                    count++;
+                    pos = newPos + 1;
+
+                }
+                else {
+
                     break;
                 }
-                else
-    break;}
-    if ((foundFirstPos!=-1)&&(foundSecondPos!=-1)){
-  if ((foundFirstPos<foundSecondPos)){
-      endPos=foundFirstPos;
-     
-     clearString=clearString+ str.substring(beginPos,endPos);
-      beginPos=endPos+firstWord.length;
-    
-  }
-    else if((foundSecondPos<foundFirstPos)){
-      endPos=foundSecondPos;
-      
-     clearString=clearString+ str.substring(beginPos,endPos);
-      beginPos=endPos+secondWord.length;
+            }
+            return count;
+
+        }
+        // 3. Написати функцію, яка буде фільтрувати рядок і видаляти слова "xxxx" i "polityka"
+
+        function stringFilter(str, firstWord, secondWord) {
+            str = str.replace(new RegExp(firstWord, 'g'), "");
+            str = str.replace(new RegExp(secondWord, 'g'), "");
+            str = str.replace(/\s{2,}/g, " ").trim();
+            return str;
+        }
+
+        /*  function stringFilter(str,firstWord,secondWord) {
+         var pos = 0, beginPos=0,endPos=0;
+              var clearString="";
+              
+   while (true) {
+   var foundFirstPos = (str.indexOf(firstWord, beginPos));
        
+   var foundSecondPos =(str.indexOf(secondWord,beginPos));
+       
+       
+               if((foundFirstPos==-1)&&(foundSecondPos==-1)){
+                   if (beginPos!=str.length){
+                       clearString=clearString+ str.substring(beginPos);
+                       break;
+                   }
+                   else
+       break;}
+       if ((foundFirstPos!=-1)&&(foundSecondPos!=-1)){
+     if ((foundFirstPos<foundSecondPos)){
+         endPos=foundFirstPos;
         
-  }
-    }
-    else if ((foundFirstPos==-1)&&(foundSecondPos!=-1)){
-        endPos=foundSecondPos;
+        clearString=clearString+ str.substring(beginPos,endPos);
+         beginPos=endPos+firstWord.length;
        
-     clearString=clearString+ str.substring(beginPos,endPos);
-      beginPos=endPos+secondWord.length;
+     }
+       else if((foundSecondPos<foundFirstPos)){
+         endPos=foundSecondPos;
          
-    }
-    else if ((foundFirstPos!=-1)&&(foundSecondPos==-1)){
-    endPos=foundFirstPos;
-     
-     clearString=clearString+ str.substring(beginPos,endPos);
-      beginPos=endPos+firstWord.length;
-      
-}
-}
-           return clearString;
+        clearString=clearString+ str.substring(beginPos,endPos);
+         beginPos=endPos+secondWord.length;
+          
+           
+     }
        }
-       // 4. Профільтрувати строку "іва 24 уц ац34434ауку" і вивести тільки цифри
-  function findDigit(str) {
- return str.replace(/\D+/g," ");
-  }
-
-  
-//завдання 1.
-var newstr=truncate("рудщ ві віав",3);
-console.log(newstr);
-      //завдання 2.
- var countA = findA("Назва Львів дана місту на честь князя Лева Даниловича, сина засновника Львова Данила Галицького.");
-      console.log("Кількість букв \"a\":"); 
-   console.log(countA);   
-  //завдання 3.
-     var newString= stringFilter("xxxx polityka first xxxx second polityka third fourth xxxx fifth", "xxxx", "polityka");
-       console.log("newstr="+newString);  
-      //завдання 4
-var digitStr=findDigit("іва 24 уц ац34434ауку");
-       console.log("digits="+digitStr);  
-
-
-
-
+       else if ((foundFirstPos==-1)&&(foundSecondPos!=-1)){
+           endPos=foundSecondPos;
+          
+        clearString=clearString+ str.substring(beginPos,endPos);
+         beginPos=endPos+secondWord.length;
+            
+       }
+       else if ((foundFirstPos!=-1)&&(foundSecondPos==-1)){
+       endPos=foundFirstPos;
+        
+        clearString=clearString+ str.substring(beginPos,endPos);
+         beginPos=endPos+firstWord.length;
+         
+   }
+   }
+              return clearString;
+          }*/
+        // 4. Профільтрувати строку "іва 24 уц ац34434ауку" і вивести тільки цифри
+        function findDigit(str) {
+            return str.replace(/\D+/g, " ");
+        }
 
 
+        //завдання 1.
+        var newstr = truncate("рудщ ві віав", 3);
+        console.log(newstr);
+        //завдання 2.
+        var countA = findA("Назва Львів дана місту на честь князя Лева Даниловича, сина засновника Львова Данила Галицького.");
+        console.log("Кількість букв \"a\":");
+        console.log(countA);
+        //завдання 3.
+        var newString = stringFilter("xxxx polityka first xxxx second polityka third fourth xxxx fifth", "xxxx", "polityka");
+        console.log("newstr=" + newString);
+        //завдання 4
+        var digitStr = findDigit("іва 24 уц ац34434ауку");
+        console.log("digits=" + digitStr);
 
-</script>
+
+
+
+
+
+
+    </script>
 </body>
+
 </html>
